@@ -1,17 +1,17 @@
-file_path = 'Mars_Base_Inventory_List.csv'
+file_path = 'Mars_Base_Inventory_List.csv' # 파일 읽음
 
 def read_csv(file_path):
     """CSV 파일을 읽어 리스트로 변환"""
     data = []
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
-            lines = file.readlines()
-        headers = lines[0].strip().split(',')
-        for line in lines[1:]:
-            values = line.strip().split(',')
+            lines = file.readlines() # 파일을 lines에 저장
+
+        for line in lines[1:]: #첫번째줄 (헤더)를 건너 뜀.
+            values = line.strip().split(',') # 공백 제거, , 기준으로 데이터 나누기
             try:
                 flammability = float(values[-1])  # 마지막 열이 인화성 지수
-                data.append((values[0], flammability))
+                data.append((values[0], flammability)) # data에 값을 추가.
             except ValueError:
                 continue  # 변환 실패 시 건너뜀
     except Exception as e:
