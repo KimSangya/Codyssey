@@ -7,13 +7,10 @@ def read_log_file(filename): #각 함수 설정
     except FileNotFoundError: # 파일이 없다면 다시 실행
         print('Error: Log file not found.')
         return []
-
-"""
-    # 로그를 시간대로 출력하는 함수
-    def print_logs(logs):
+    
+def print_logs(logs): # 로그를 시간대로 출력하는 함수
     for log in logs:
         print(log.strip())
-"""
 
 def print_logs_in_reverse(logs):
     """로그를 시간의 역순으로 출력하는 함수"""
