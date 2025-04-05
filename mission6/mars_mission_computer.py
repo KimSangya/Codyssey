@@ -2,7 +2,7 @@ import random
 
 class DummySensor: # class 생성 및 변수 추가.
     def __init__(self):
-        self.__env_values = {
+        self.env_values = {
             'mars_base_internal_temperature': 0.0,
             'mars_base_external_temperature': 0.0,
             'mars_base_internal_humidity': 0.0,
