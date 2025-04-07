@@ -15,6 +15,10 @@ env_values = {
     "mars_base_internal_oxygen": [(4, 7), 4, 0, '%']
 }
 
+''' 
+    class DummySensor 개념은 원래 배웠던 내용을 그대로 사용하는 것임으로,
+    자세한 설명은 생략.
+'''
 # 센서 역할을 하는 DummySensor 클래스 정의
 class DummySensor:
     def __init__(self, env_values):
@@ -24,7 +28,7 @@ class DummySensor:
         if not self.__file_exist(log_file):
             with open(log_file, 'a') as log:
                 headers = self.env_values.keys()
-                log.write('Date | ' + ' | '.join(headers) + '\n')
+                log.write('Date | ' + ' | '.join(headers) + '\n') # 헤더가 없을 경우 집어넣어서 제목들을 지어넣음.
 
     # 로그 파일 존재 여부를 확인하는 메서드 (비공개)
     def __file_exist(self, log_file):
@@ -36,7 +40,7 @@ class DummySensor:
 
     # 현재 환경 데이터를 반환
     def get_env(self):
-        return self.env_values
+        return self.env_values #값을 그대로 받고 반환.
 
     # 환경 데이터를 난수로 갱신하고 로그에 저장
     def set_env(self):
@@ -63,7 +67,7 @@ class MissionComputer:
     def key_listener(self):
         while True:
             key = input()
-            if key == 'q':
+            if key == 'q': #내가 만약 q를 눌렀을 경우.
                 print('종료 키 q 눌림')  # 사용자에게 알림
                 self.stop_flag = True  # 종료 플래그 활성화
                 break
