@@ -56,7 +56,7 @@ class DummySensor:
             values = list(map(lambda x: str(f'{x[1]:.2f}'), self.env_values.values()))
             log.write(f'{now_str} | ' + ' | '.join(values) + '\n')
 
-# 미션 컴퓨터 클래스 정의
+# 미션 컴퓨터 클래스 정의 mission 7의 문제는 여기서 부터 시작.
 class MissionComputer:
 
     def __init__(self, env_values):
@@ -73,9 +73,9 @@ class MissionComputer:
                 break
 
     # 센서 데이터를 주기적으로 가져와 출력하고 평균을 계산
-    def get_sensor_data(self, ds, interval=5, ave_interval_min=5):
+    def get_sensor_data(self, ds, interval=5, ave_interval_min=5): # 인터벌 : 몇초마다 가져오는지, ave : 평균 
         # 키보드 입력을 감지하는 스레드 시작
-        listener_thread = threading.Thread(target=self.key_listener, daemon=True)
+        listener_thread = threading.Thread(target=self.key_listener, daemon=True) #daemon = 메인 프로그램이 꺼지면, 스레드도 꺼지게 하는 옵션션
         listener_thread.start()
 
         # 총 루프 횟수 계산 (예: 5분 = 300초 / 5초 간격 = 60번)
