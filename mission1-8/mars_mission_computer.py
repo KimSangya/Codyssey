@@ -3,7 +3,7 @@ import platform  # 운영체제 및 CPU 등의 정보 확인을 위한 모듈
 import psutil  # 시스템 리소스 정보(CPU, 메모리 등) 수집을 위한 외부 라이브러리
 
 
-class MissionComputer:  # 미션 컴퓨터 클래스 정의
+class MissionComputer:  # 미션 컴퓨터 클래스 정의 / mission7에서 설명했던 부분이니 패스.
 
     def __init__(self, env_values):  # 클래스 초기화 메서드
         self.env_values = env_values  # 센서 환경 값 저장
@@ -53,13 +53,13 @@ class MissionComputer:  # 미션 컴퓨터 클래스 정의
         print("System stopped...")  # 종료 메시지 출력
 
     def get_mission_computer_info(self):  # 시스템 정보 수집 메서드
-        info = {}  # 결과 저장용 딕셔너리
+        info = {}  # 결과 저장용 딕셔너리 
 
         try:  # 예외 처리
             info['os'] = platform.system()  # 운영체제 이름
             info['os_version'] = platform.version()  # 운영체제 버전
             info['cpu_type'] = platform.processor()  # CPU 종류
-            info['cpu_count'] = psutil.cpu_count(logical=True)  # 논리 코어 수
+            info['cpu_count'] = psutil.cpu_count(logical=True)  # cpu 논리 코어 수
             info['memory'] = f"{round(psutil.virtual_memory().total / (1024 ** 2))} MB"  # 전체 메모리(MB)
         except Exception as e:  # 예외 발생 시
             print(f"시스템 정보 수집 중 오류 발생: {e}")  # 오류 출력
@@ -87,7 +87,7 @@ class MissionComputer:  # 미션 컴퓨터 클래스 정의
         try:  # 파일 읽기 시 예외 처리
             with open('setting.txt', 'r') as f:  # setting.txt 열기
                 settings = [line.strip() for line in f if line.strip()]  # 빈 줄 제거 및 공백 제거
-                return {k: v for k, v in data.items() if k in settings}  # 설정된 항목만 반환
+                return {k: v for k, v in data.items() if k in settings}  # setting에 설정된 항목만 반환
         except FileNotFoundError:  # 파일이 없을 경우
             return data  # 전체 출력
 
