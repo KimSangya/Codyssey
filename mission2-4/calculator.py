@@ -23,7 +23,7 @@ class CalculatorCore:
 
     def divide(self, a, b):  # 나눗셈 메서드 (0 나누기 예외 처리)
         if b == 0:
-            raise ZeroDivisionError('Cannot divide by zero')
+            raise ZeroDivisionError('0으로 나눌 수 없습니다.')
         return a / b
 
     def negative_positive(self):  # 부호 전환 메서드
@@ -41,12 +41,12 @@ class CalculatorCore:
     def equal(self):  # 수식 계산 및 결과 처리
         try:
             expr = self.expression.replace('×', '*').replace('÷', '/')  # 연산자 변환
-            result = eval(expr)  # 문자열 수식 계산
+            result = eval(expr)  # 문자열 수식 계산 / 문자열로된 파이썬 수식이나 코드를 실제로 실행하게 만드는 함수. / 다만 문자열이 들어갈수있기 때문에 조심해야 함. / 다만 학교에서 사용하는것이니 패스.
             if isinstance(result, float):
                 result = '{:.6f}'.format(result).rstrip('0').rstrip('.')  # 소수점 6자리 반올림 + 깔끔한 출력
             self.expression = str(result)
         except ZeroDivisionError:
-            self.expression = 'Cannot divide by 0'
+            self.expression = '0으로 나눌 수 없습니다.'
         except:
             self.expression = 'Error'
 
@@ -63,7 +63,7 @@ class Calculator(QWidget):  # PyQt5를 이용한 UI 클래스
         main_layout = QVBoxLayout()  # 전체 세로 레이아웃
 
         self.display = QLabel('0')  # 결과 표시용 라벨
-        self.display.setAlignment(Qt.AlignRight | Qt.AlignVCenter)  # 오른쪽 정렬
+        self.display.setAlignment(Qt.AlignRight | Qt.AlignVCenter)  # 오른쪽 수직직 정렬
         self.display.setStyleSheet('font-size: 40px; padding: 20px; background: black; color: white;')  # 스타일 지정
         main_layout.addWidget(self.display)  # 메인 레이아웃에 디스플레이 추가
 
@@ -86,12 +86,12 @@ class Calculator(QWidget):  # PyQt5를 이용한 UI 클래스
 
         row_idx = len(buttons)  # 마지막 줄 인덱스
         for btn_text, col_info in zip(buttons[-1], [(0, 2), (2, 1), (3, 1)]):  # 마지막 줄 처리 (0 버튼은 2칸 병합)
-            col, colspan = col_info
-            btn = QPushButton(btn_text)
-            btn.setFixedHeight(60)
-            btn.setStyleSheet('font-size: 24px;')
-            button_layout.addWidget(btn, row_idx, col, 1, colspan)
-            btn.clicked.connect(self.button_clicked)
+            col, colspan = col_info  # 위치 정보 분리
+            btn = QPushButton(btn_text)  # 버튼 생성
+            btn.setFixedHeight(60)  # 높이 고정
+            btn.setStyleSheet('font-size: 24px;')  # 글자 크기 설정
+            button_layout.addWidget(btn, row_idx, col, 1, colspan)  # 그리드 위치 + 병합 크기 설정
+            btn.clicked.connect(self.button_clicked)  # 클릭 이벤트 연결
 
         main_layout.addLayout(button_layout)  # 버튼 레이아웃 추가
         self.setLayout(main_layout)  # 최종 레이아웃 적용
