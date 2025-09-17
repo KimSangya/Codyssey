@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>우주 해적 안내서</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,Pretendard,Helvetica,Arial,sans-serif;margin:0;background:#0b1220;color:#e6edf3;line-height:1.6}
+    header{padding:48px 24px;text-align:center;background:radial-gradient(1200px 600px at 50% -200px,#1a2540,#0b1220)}
+    h1{margin:0 0 8px;font-size:40px}
+    .sub{opacity:.8}
+    main{max-width:840px;margin:32px auto;padding:0 20px}
+    .card{background:#0f172a;border:1px solid #1f2a44;border-radius:16px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    svg{display:block;margin:0 auto 12px;max-width:360px}
+    code{background:#0b1220;border:1px solid #1f2a44;border-radius:8px;padding:2px 6px}
+    footer{opacity:.7;text-align:center;padding:24px}
+    a{color:#8ab4ff;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>우주 해적 안내서</h1>
+    <p class="sub">블랙홀 가장자리를 항해하는 무법자들의 생존 기술</p>
+  </header>
+  <main>
+    <div class="card">
+      <!-- 인라인 SVG: 우주선 아이콘(이미지 포함 요건 충족) -->
+      <svg viewBox="0 0 256 256" role="img" aria-label="spaceship">
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0" stop-opacity=".8" stop-color="#6ee7ff"/>
+            <stop offset="1" stop-opacity=".9" stop-color="#a78bfa"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#g)" d="M20 236l88-44 48-48 80-84-84 80-48 48-44 88z"/>
+        <path fill="#1f2a44" d="M132 140l-16-16 92-92c10-10 30-10 40 0s10 30 0 40l-92 92-24-24z"/>
+        <circle r="8" cx="210" cy="46" fill="#8ab4ff"/>
+      </svg>
+
+      <h2>우주 해적 소개</h2>
+      <p>
+        우주 해적은 규칙보다 <em>기민한 판단</em>과 <em>은밀한 항로</em>를 중시합니다.
+        레이더에 잡히지 않게 <code>저출력 워프</code>로 접근하고, 표적의 통신을
+        <code>스푸핑</code>해 혼선을 유도한 뒤, 필요한 물자만 정밀하게 회수합니다.
+      </p>
+
+      <h3>생존 팁</h3>
+      <ul>
+        <li>항로는 매번 달리한다 — 패턴은 곧 약점.</li>
+        <li>과한 무장은 박물관으로, 가벼운 기동성이 생명.</li>
+        <li>정보가 최강의 연료 — 신호, 기록, 루머까지 모아라.</li>
+      </ul>
+
+      <p>
+        보너스: <a href="/whoami">/whoami</a>로 접속하면 당신의 IP와
+        대략적 위치(가능 시)를 JSON으로 확인할 수 있습니다.
+      </p>
+    </div>
+  </main>
+  <footer>© Space Corsairs</footer>
+</body>
+</html>
