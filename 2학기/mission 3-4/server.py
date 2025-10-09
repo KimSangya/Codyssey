@@ -75,7 +75,7 @@ def lookup_geo(ip: str, timeout: float = 2.5) -> Optional[Dict[str, str]]:
 class SpaceHandler(BaseHTTPRequestHandler):
     server_version = 'SpaceHTTP/0.2'
 
-    def do_GET(self) -> None:  # noqa: N802
+    def do_GET(self) -> None:  # 이 사이트로 접속할때 GET으로 들어오게 된다면.
         client_ip = self.client_address[0]
         path = self.path or '/'
         log_access(client_ip, path)
