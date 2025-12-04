@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-
-from database import SessionLocal
+from database import get_db
 from models import Question
+from domain.question.question_schema import QuestionSchema
 
 router = APIRouter(
     prefix='/api/question',
@@ -10,25 +10,8 @@ router = APIRouter(
 )
 
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
-@router.get('/list')
+@router.get('/list', response_model=list[QuestionSchema])
 def question_list(db: Session = Depends(get_db)):
-    """SQLite에 저장된 질문 목록을 ORM으로 가져오는 함수"""
+    """DB에서 모든 질문을 조회"""
     questions = db.query(Question).order_by(Question.id.desc()).all()
-    result = [
-        {
-            'id': q.id,
-            'subject': q.subject,
-            'content': q.content,
-            'create_date': q.create_date.isoformat()
-        }
-        for q in questions
-    ]
-    return {'items': result, 'count': len(result)}
+    return questions
